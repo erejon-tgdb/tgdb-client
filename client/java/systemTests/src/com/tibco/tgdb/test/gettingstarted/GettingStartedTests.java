@@ -104,7 +104,7 @@ public class GettingStartedTests {
 			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[0].getName(), null, null, -1);
 
 		}else{
-			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[0].getName(), null, null, 60000);
+			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[1].getName(), null, null, 60000);
 
 		}
 	}
