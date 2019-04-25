@@ -85,12 +85,12 @@ public class GettingStartedTests {
 	 */
 	@BeforeMethod
 	public void startServer() throws Exception {
-		if (System.getProperty("os.name").equalsIgnoreCase("Mac Os X")) {
-			tgServer.start(60000);
-		} else {
+//		if (System.getProperty("os.name").equalsIgnoreCase("Mac Os X")) {
+//			tgServer.start(60000);
+//		} else {
 			tgServer.start(10000);
 
-		}
+//		}
 	}
 
 	/**
