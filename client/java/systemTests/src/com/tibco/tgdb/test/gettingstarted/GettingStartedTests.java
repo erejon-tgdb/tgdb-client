@@ -85,10 +85,11 @@ public class GettingStartedTests {
 	 */
 	@BeforeMethod
 	public void startServer() throws Exception {
-		if (!System.getProperty("os.name").equalsIgnoreCase("Mac Os X")) {
-			tgServer.start(10000);
-		} else {
+		if (System.getProperty("os.name").equalsIgnoreCase("Mac Os X")) {
 			tgServer.start(60000);
+		} else {
+			tgServer.start(10000);
+
 		}
 	}
 
@@ -101,10 +102,10 @@ public class GettingStartedTests {
 		Thread.sleep(1000); // avoid corrupted shm file if stopping too early (1.1.1 release)
 
 		if (System.getProperty("os.name").equalsIgnoreCase("Mac Os X")){
-			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[0].getName(), null, null, -1);
+			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[1].getName(), null, null, -1);
 
 		}else{
-			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[1].getName(), null, null, 60000);
+			TGAdmin.stopServer(tgServer, tgServer.getNetListeners()[0].getName(), null, null, 60000);
 
 		}
 	}
