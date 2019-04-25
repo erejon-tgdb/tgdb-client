@@ -118,7 +118,7 @@ public class QueryGraph {
             String queryString = null;
             String traverseString = null;
             String endString = null;
-            TGResultSet resultSet = null;
+            TGResultSet<TGEntity> resultSet = null;
             int dumpDepth = 5;
             int currDepth = 0;
             boolean dumpBreadth = false;

@@ -18,16 +18,20 @@ import com.tibco.tgdb.exception.TGException;
 import com.tibco.tgdb.log.TGLogManager;
 import com.tibco.tgdb.log.TGLogger;
 import com.tibco.tgdb.model.*;
+import com.tibco.tgdb.utils.ConfigName;
+
+import java.util.Map;
+import java.util.Properties;
 
 public class ConnectionUnitTest {
 
     //public String url = "ssl://scott@192.168.1.15:8223/{ftHosts=192.168.1.15:8222;ftRetryCount=5;ftRetryIntervalSeconds=30;dbName=mod;verifyDBName=true}";
-    public String url = "ssl://scott@10.108.16.93:8223/{ftHosts=192.168.1.15:8222;ftRetryCount=5;ftRetryIntervalSeconds=30;dbName=mod;verifyDBName=true}";
+    //public String url = "ssl://scott@10.108.16.93:8223/{ftHosts=192.168.1.15:8222;ftRetryCount=5;ftRetryIntervalSeconds=30;dbName=mod;verifyDBName=true}";
     //public String url = "ssl://scott@localhost:8223/{dbName=mod;verifyDBName=true}";
     //public String url = "tcp://scott@localhost:8223/{dbName=mod;verifyDBName=true}";
     //public String url = "tcp://scott@10.98.201.111:8228/{connectTimeout=30}";
     //public String url = "tcp://scott@[fe80::1c15:49f2:b621:7ced%en0:8222]";
-    //public String url = "tcp://scott@localhost:8222";
+    public String url = "tcp://scott@localhost:8222";
     public String passwd = "scott";
     public TGLogger.TGLevel logLevel = TGLogger.TGLevel.Debug;
     TGGraphObjectFactory gof;
@@ -47,7 +51,10 @@ public class ConnectionUnitTest {
 
     public void connect() throws TGException {
         System.out.printf("Using url : %s, password : %s, log level : %s\n", url, passwd, logLevel.toString());
-        conn = TGConnectionFactory.getInstance().createConnection(url, null, passwd, null);
+        Map props = new Properties();
+        props.put(ConfigName.EnableConnectionTrace.getName(), "true" );
+        props.put(ConfigName.ConnectionTraceDir.getName(), "/Users/suresh/Desktop/United/FlightLegs/resources/trace");
+        conn = TGConnectionFactory.getInstance().createConnection(url, null, passwd, props);
 
         conn.connect();
 
@@ -60,15 +67,15 @@ public class ConnectionUnitTest {
 //        char[] cbuf = new char[10000];
 //        clob.setChars(cbuf);
 
-        gmd = conn.getGraphMetadata(true);
-        basicNodeType = gmd.getNodeType("basicnode");
-        if (basicNodeType == null) throw new TGException("Node desc basicnode not found");
-
-        rateNodeType = gmd.getNodeType("ratenode");
-        if (rateNodeType == null) throw new TGException("Node desc ratenode not found");
-
-        testNodeType = gmd.getNodeType("testnode");
-        if (testNodeType == null) throw new TGException("Node desc testnode not found");
+//        gmd = conn.getGraphMetadata(true);
+//        basicNodeType = gmd.getNodeType("basicnode");
+//        if (basicNodeType == null) throw new TGException("Node desc basicnode not found");
+//
+//        rateNodeType = gmd.getNodeType("ratenode");
+//        if (rateNodeType == null) throw new TGException("Node desc ratenode not found");
+//
+//        testNodeType = gmd.getNodeType("testnode");
+//        if (testNodeType == null) throw new TGException("Node desc testnode not found");
 
 
     }

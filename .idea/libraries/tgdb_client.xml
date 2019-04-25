@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="tgdb-client">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/tgdb/2.0/lib/tgdb-client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/tgdb/2.0/lib/tgdb-gremlin-mincore.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
